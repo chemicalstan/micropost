@@ -9498,8 +9498,51 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
-var greeting = 'Hello World';
-console.log(greeting);
+// common js module syntax
+var person = __webpack_require__(334);
+
+console.log(person.name);
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+module.exportsp = {
+    name: 'Stanley',
+    email: 'chemicalstan15@gmail.com'
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(335)(module)))
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
 
 /***/ })
 /******/ ]);
