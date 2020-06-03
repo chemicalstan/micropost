@@ -2,8 +2,8 @@ class UI {
     constructor(){
         this.post = document.getElementById('post');
         this.titleInput = document.querySelector('#title');
-        this.bodyInpuyt = document.querySelector('#body');
-        this.idInpuyt = document.querySelector('#id');
+        this.bodyInput = document.querySelector('#body');
+        this.idInput = document.querySelector('#id');
         this.postSubmit = document.querySelector('.post-submit');
         this.formState = 'add';
     }
@@ -25,6 +25,36 @@ class UI {
             </div>
             `});
         this.post.innerHTML = output;
+    };
+    clearFields(){
+        this.titleInput.value = '';
+        this.bodyInput.value = ''
+    }
+    clearAlert(){
+        const alert = document.querySelector('.alert');
+        
+        if(alert){
+            alert.remove();
+        }
+    }
+
+    showAlert(message, className){
+
+        this.clearAlert();
+        // create div
+        const div = document.createElement('div');
+        // add class
+        div.className = className;
+        div.appendChild(document.createTextNode(message));
+        // grab parent Node
+        const container = document.querySelector('.postsContainer');
+        // get posts
+        const post = document.querySelector('#post')
+        // insert alert before posts
+        container.insertBefore(div, post)
+        setTimeout(()=>{
+            this.clearAlert()
+        }, 3000)
     }
 }
 
