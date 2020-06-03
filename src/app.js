@@ -32,9 +32,30 @@ function submitPost (e){
         .catch(err=>console.log(err))
 }
 
-// Listen for edit state
-document.querySelector('.fa-pencil').addEventListener('click', editPost);
+// Listen for delete state 
+document.querySelector('#post').addEventListener('click', deletePost);
 
-function editPost(e){
-    console.log('do you want to edit post??')
+function deletePost(e){
+    // e.preventDefault()
+    if(e.target.parentElement.classList.contains('delete')){
+        if(window.confirm('are you sure you want to delete post?')){
+            const deleteId = e.target.parentElement.dataset.id;
+            http.delete(`http://localhost:3000/posts/${deleteId}`)
+                .then(resData=>{
+                    ui.showAlert(resData, 'alert alert-success');
+                    getPosts();
+                })
+                .catch(err=>console.log(err));
+        }
+    }
+}
+
+// Listen for edit state
+document.querySelector('#post').addEventListener('click', enableEdit);
+
+function enableEdit(e){
+    e.preventDefault()
+    if(e.target.parentElement.classList.contains('edit')){
+        console.log(e.target.parentElement.dataset.id)
+    }
 }

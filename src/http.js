@@ -52,7 +52,7 @@ class easyHttp{
             }
         });
 
-        const message = 'User Deleted Succesfully';
+        const message = 'Post Deleted Succesfully';
         return message;
 
     }
