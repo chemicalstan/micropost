@@ -59,18 +59,13 @@ class UI {
             this.clearAlert()
         }, 3000)
     }
-
     fillForm(data){
         // fill input fields 
         this.titleInput.value = data.title;
         this.bodyInput.value = data.body;
         this.idInput.value = data.id;
-
         this.changeFormState('edit');
-        let that = this
     }
-
-
     changeFormState(type){
         if(type === 'edit'){
             this.postSubmit.textContent = "Update Post"
@@ -100,6 +95,4 @@ class UI {
         }
     }
 }
-
-
 export const ui = new UI();
