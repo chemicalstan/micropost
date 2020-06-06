@@ -40,7 +40,8 @@ class easyHttp{
         })
 
         const resData = response.json();
-        return resData;
+        // return resData;
+        return 'updated'
 
     }
     // make an http put request
